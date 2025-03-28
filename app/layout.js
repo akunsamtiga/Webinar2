@@ -12,7 +12,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: 'Webinar AI | Transformasi Digital untuk Bisnis',
+  title: 'Webinar | Transformasi Digital untuk Bisnis',
   description: 'Pelajari strategi terbaru implementasi AI dalam bisnis dari para ahli industri',
 };
 

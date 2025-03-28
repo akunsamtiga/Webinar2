@@ -30,7 +30,7 @@ const About = () => {
     <section className="py-16 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
         {/* Header Section */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-8 md:mb-12">
           <h2 className="text-5xl font-light text-gray-900 mb-3">
             Tentang <span className="text-red-600 font-bold">Webinar</span>
           </h2>
@@ -44,7 +44,7 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-10 md:mb-14"
         >
           <div className="aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-sm">
             <iframe
@@ -64,7 +64,7 @@ const About = () => {
         </motion.div>
 
         {/* Konten Utama */}
-        <div className="flex flex-col lg:flex-row gap-12">
+        <div className="flex flex-col md:flex-row gap-12">
           {/* Deskripsi */}
           <div className="flex-1 space-y-6">
             <div className="space-y-4">
@@ -111,7 +111,7 @@ const About = () => {
 
         {/* Target Audience */}
         <div className="mt-12">
-          <h3 className="text-lg font-medium text-gray-900 text-center mb-8">Untuk Siapa?</h3>
+          <h3 className="text-xl font-bold text-gray-900 text-center mb-8">Untuk Siapa?</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {[
               {

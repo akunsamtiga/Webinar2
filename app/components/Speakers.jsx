@@ -64,7 +64,7 @@ const Speakers = () => {
   };
 
   return (
-    <section className="relative py-20 bg-white overflow-hidden">
+    <section className="relative py-12 bg-white overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         {/* Header */}
         <motion.div
@@ -101,10 +101,10 @@ const Speakers = () => {
               key={index}
               variants={cardVariants}
               whileHover={{ y: -5 }}
-              className="bg-white rounded-t-[150px] overflow-hidden border border-gray-100 hover:shadow-md transition-all"
+              className="bg-white rounded-t-[30px] overflow-hidden border border-gray-100 transition-all"
             >
               {/* Foto Pembicara */}
-              <div className="relative h-72">
+              <div className="relative h-46 md:h-64 lg:h-72">
                 <Image
                   src={speaker.image}
                   alt={speaker.name}
