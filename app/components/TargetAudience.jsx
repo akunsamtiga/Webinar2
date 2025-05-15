@@ -1,29 +1,31 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { BriefcaseIcon, ChartBarIcon, CodeBracketIcon, LightBulbIcon } from '@heroicons/react/24/outline';
 
 const TargetAudience = () => {
+  const shouldReduceMotion = useReducedMotion();
+
   const audiences = [
     {
-      icon: <BriefcaseIcon className="w-6 h-6 text-red-600" />,
+      icon: <BriefcaseIcon className="w-6 h-6 text-red-600" aria-hidden="true" />,
       title: "Profesional Bisnis",
       description: "CEO, Manajer, dan pengambil keputusan yang ingin memanfaatkan AI untuk efisiensi operasional",
       roles: ["CEO/CTO", "Product Manager", "Business Analyst"]
     },
     {
-      icon: <CodeBracketIcon className="w-6 h-6 text-red-600" />,
+      icon: <CodeBracketIcon className="w-6 h-6 text-red-600" aria-hidden="true" />,
       title: "Tim Teknologi",
       description: "Developer dan IT specialist yang ingin mengintegrasikan AI ke dalam sistem perusahaan",
       roles: ["Software Engineer", "Data Scientist", "IT Manager"]
     },
     {
-      icon: <LightBulbIcon className="w-6 h-6 text-red-600" />,
+      icon: <LightBulbIcon className="w-6 h-6 text-red-600" aria-hidden="true" />,
       title: "Startup Founder",
       description: "Pendiri startup yang mencari competitive edge dengan teknologi terkini",
       roles: ["Founder", "Startup Team", "Digital Entrepreneur"]
     },
     {
-      icon: <ChartBarIcon className="w-6 h-6 text-red-600" />,
+      icon: <ChartBarIcon className="w-6 h-6 text-red-600" aria-hidden="true" />,
       title: "Digital Marketer",
       description: "Profesional marketing yang ingin memanfaatkan AI untuk kampanye lebih efektif",
       roles: ["Digital Marketer", "Content Creator", "Growth Hacker"]
@@ -44,19 +46,23 @@ const TargetAudience = () => {
         </div>
 
         {/* Audience Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" role="list">
           {audiences.map((audience, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
+              whileInView={shouldReduceMotion ? {} : { opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: shouldReduceMotion ? 0 : index * 0.1 }}
+              role="listitem"
               className="bg-white border border-gray-200 rounded-lg p-6 hover:border-red-200 transition-colors"
             >
               <div className="flex flex-col h-full">
                 {/* Icon */}
-                <div className="p-2 bg-red-50 rounded-md w-10 h-10 flex items-center justify-center mb-4">
+                <div
+                  className="p-2 bg-red-50 rounded-md w-10 h-10 flex items-center justify-center mb-4"
+                  aria-label={`Ikon untuk ${audience.title}`}
+                >
                   {audience.icon}
                 </div>
 
@@ -67,9 +73,9 @@ const TargetAudience = () => {
                 {/* Roles */}
                 <div className="pt-4 border-t border-gray-100">
                   <h4 className="text-xs text-gray-500 uppercase tracking-wider mb-2">Peran Terkait:</h4>
-                  <ul className="space-y-1.5">
+                  <ul className="space-y-1.5" role="list">
                     {audience.roles.map((role, i) => (
-                      <li key={i} className="text-sm text-gray-600 flex items-start">
+                      <li key={i} role="listitem" className="text-sm text-gray-600 flex items-start">
                         <span className="text-red-600 mr-2">•</span>
                         {role}
                       </li>
@@ -83,15 +89,18 @@ const TargetAudience = () => {
 
         {/* CTA */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+          initial={shouldReduceMotion ? false : { opacity: 0 }}
+          whileInView={shouldReduceMotion ? {} : { opacity: 1 }}
           viewport={{ once: true }}
           className="mt-12 text-center"
         >
           <p className="text-gray-500 mb-4">Tidak yakin apakah webinar ini cocok untuk Anda?</p>
-          <button className="px-6 py-2.5 bg-red-700 text-white rounded-md hover:bg-red-700 transition-colors text-sm font-medium">
+          <a
+            href="#contact"
+            className="inline-block px-6 py-2.5 bg-red-700 text-white rounded-md hover:bg-red-800 transition-colors text-sm font-medium"
+          >
             Konsultasi Gratis
-          </button>
+          </a>
         </motion.div>
       </div>
     </section>
