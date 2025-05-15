@@ -80,41 +80,6 @@ const About = () => {
           </p>
         </header>
 
-        {/* Video Promosi with optimized loading */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3 }}
-          viewport={{ once: true, margin: "100px" }}
-          className="mb-10 md:mb-14"
-        >
-          <div className="aspect-video bg-gray-100 rounded-xl overflow-hidden shadow-sm relative">
-            {/* Lazy-loaded iframe with placeholder */}
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/A_8RQ1IkRGE?autoplay=0"
-              title="Video pengantar webinar AI untuk bisnis"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-              className="w-full h-full absolute inset-0"
-              loading="lazy"
-              aria-label="Video pengantar webinar"
-              importance="low"
-            />
-            <noscript>
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
-                <div className="text-center p-4">
-                  <p className="text-gray-500">Aktifkan JavaScript untuk menonton video</p>
-                </div>
-              </div>
-            </noscript>
-          </div>
-          <p className="text-center text-sm text-gray-500 mt-3">
-            Tonton video pengantar webinar kami
-          </p>
-        </motion.div>
-
         {/* Main Content */}
         <main>
           <div className="flex flex-col md:flex-row gap-8 md:gap-12">
