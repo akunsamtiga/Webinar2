@@ -12,8 +12,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: 'Webinar | Transformasi Digital untuk Bisnis',
-  description: 'Pelajari strategi terbaru implementasi AI dalam bisnis dari para ahli industri',
+  title: 'Lumicast',
+  description: 'Menerangi pikiran, memperluas wawasan—webinar eksklusif untuk masa depanmu.',
 };
 
 export default function RootLayout({ children }) {
