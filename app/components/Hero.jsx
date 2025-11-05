@@ -1,6 +1,6 @@
 'use client';
 import { motion, useAnimation } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import { ArrowRightIcon } from '@heroicons/react/24/solid';
@@ -23,20 +23,12 @@ const MapPinIcon = dynamic(() => import('@heroicons/react/24/solid').then(mod =>
 
 const Hero = () => {
   const controls = useAnimation();
-  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
     controls.start('visible');
-    
-    return () => window.removeEventListener('resize', checkMobile);
   }, [controls]);
 
+  // Optimized animations for performance
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -61,146 +53,9 @@ const Hero = () => {
     }
   };
 
-  // Mobile Layout
-  if (isMobile) {
-    return (
-      <section className="relative w-full min-h-screen bg-white overflow-hidden" aria-labelledby="hero-heading">
-        {/* Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-gradient-to-b from-red-50 via-white to-white"></div>
-        </div>
-
-        {/* Main Content */}
-        <div className="relative z-10 px-4 pt-20 pb-12">
-          <motion.div
-            initial="hidden"
-            animate={controls}
-            variants={containerVariants}
-            className="text-center"
-          >
-            {/* Badge */}
-            <motion.div
-              variants={itemVariants}
-              className="inline-flex items-center px-3 py-1.5 rounded-full bg-red-100 text-red-600 text-xs font-medium mb-4"
-              aria-label="Training status"
-            >
-              <span className="w-2 h-2 rounded-full bg-red-500 mr-2"></span>
-              Training Langsung • Terbatas
-            </motion.div>
-
-            {/* Title */}
-            <motion.h1
-              variants={itemVariants}
-              className="text-2xl font-bold leading-tight tracking-tight text-gray-900 mb-3 px-2"
-              id="hero-heading"
-            >
-              <span className="text-red-600">In House Training</span> 2023
-            </motion.h1>
-
-            {/* Subtitle */}
-            <motion.h2
-              variants={itemVariants}
-              className="text-base font-semibold text-gray-800 mb-4 px-2"
-            >
-              Internalisasi Pemahaman dan Kapabilitas Kepengurusan Organisasi
-            </motion.h2>
-
-            {/* Image */}
-            <motion.div
-              variants={itemVariants}
-              className="relative w-full h-48 my-6 rounded-xl overflow-hidden shadow-md"
-            >
-              <Image
-                src="/images/webinar5.jpg"
-                alt="In House Training IAI Muda Malang Raya"
-                fill
-                className="object-cover object-center"
-                priority
-                quality={85}
-                sizes="100vw"
-                loading="eager"
-              />
-            </motion.div>
-
-            {/* Description */}
-            <motion.p
-              variants={itemVariants}
-              className="text-sm text-gray-600 mb-5 px-2"
-            >
-              IAI Muda Malang Raya Gen 9 - <span className="font-semibold text-red-600">#Muda, Berani, Berintegritas!</span>
-            </motion.p>
-
-            {/* Event Info Cards */}
-            <motion.div
-              variants={itemVariants}
-              className="space-y-2 mb-6"
-            >
-              <div className="flex items-center justify-center bg-white px-4 py-2.5 rounded-lg border border-gray-200 shadow-sm">
-                <CalendarIcon className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" />
-                <p className="text-sm font-medium text-gray-900">16 September 2023</p>
-              </div>
-              <div className="flex items-center justify-center bg-white px-4 py-2.5 rounded-lg border border-gray-200 shadow-sm">
-                <ClockIcon className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" />
-                <p className="text-sm font-medium text-gray-900">09:00 - Selesai</p>
-              </div>
-              <div className="flex items-center justify-center bg-white px-4 py-2.5 rounded-lg border border-gray-200 shadow-sm">
-                <MapPinIcon className="w-4 h-4 text-red-500 mr-2 flex-shrink-0" />
-                <p className="text-sm font-medium text-gray-900">Online via Zoom</p>
-              </div>
-            </motion.div>
-
-            {/* Organizer Info */}
-            <motion.div
-              variants={itemVariants}
-              className="mb-6 p-4 bg-white/80 backdrop-blur-sm rounded-lg border border-gray-200 shadow-sm"
-            >
-              <p className="text-xs text-gray-600 mb-1">Penyelenggara:</p>
-              <p className="font-semibold text-gray-900 text-sm">IAI MUDA KOMISARIAT MALANG</p>
-              <p className="text-xs text-gray-500 mt-1">Anggota Muda Ikatan Akuntan Indonesia Komisariat Malang</p>
-            </motion.div>
-
-            {/* CTA Button */}
-            <motion.div
-              variants={itemVariants}
-            >
-              <motion.button
-                whileTap={{ scale: 0.98 }}
-                className="w-full flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 rounded-lg shadow-md font-medium transition-colors"
-                aria-label="Daftar training sekarang"
-              >
-                Daftar Sekarang
-                <ArrowRightIcon className="w-4 h-4" />
-              </motion.button>
-            </motion.div>
-
-            {/* Quick Stats */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-8 grid grid-cols-3 gap-3"
-            >
-              <div className="bg-white/60 backdrop-blur-sm p-3 rounded-lg border border-gray-100">
-                <p className="text-xl font-bold text-red-600">100+</p>
-                <p className="text-xs text-gray-600">Peserta</p>
-              </div>
-              <div className="bg-white/60 backdrop-blur-sm p-3 rounded-lg border border-gray-100">
-                <p className="text-xl font-bold text-red-600">8 Jam</p>
-                <p className="text-xs text-gray-600">Training</p>
-              </div>
-              <div className="bg-white/60 backdrop-blur-sm p-3 rounded-lg border border-gray-100">
-                <p className="text-xl font-bold text-red-600">Gratis</p>
-                <p className="text-xs text-gray-600">Biaya</p>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-    );
-  }
-
-  // Desktop Layout
   return (
     <section className="relative w-full min-h-screen bg-white overflow-hidden" aria-labelledby="hero-heading">
-      {/* Background */}
+      {/* Background with reduced complexity */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-red-50"></div>
         <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gradient-to-t from-white to-transparent"></div>
@@ -254,42 +109,42 @@ const Hero = () => {
             {/* Event Info */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-8 md:mb-10 flex-wrap"
+              className="flex flex-row gap-2 justify-center lg:justify-start mb-8 md:mb-10 flex-wrap"
             >
-              <div className="flex items-center bg-white px-3 py-1.5 rounded-lg border border-gray-200 shadow-xs">
-                <CalendarIcon className="w-4 h-4 md:w-5 md:h-5 text-red-500 mr-2" />
+              <div className="flex items-center bg-white px-2 py-1.5 rounded-lg border border-gray-200 shadow-xs">
+                <CalendarIcon className="w-4 h-4 text-red-500 mr-1.5" />
                 <div>
-                  <p className="text-xs md:text-sm font-medium text-gray-900">16 September 2023</p>
+                  <p className="text-xs font-medium text-gray-900">16 Sept 2023</p>
                 </div>
               </div>
-              <div className="flex items-center bg-white px-3 py-1.5 rounded-lg border border-gray-200 shadow-xs">
-                <ClockIcon className="w-4 h-4 md:w-5 md:h-5 text-red-500 mr-2" />
+              <div className="flex items-center bg-white px-2 py-1.5 rounded-lg border border-gray-200 shadow-xs">
+                <ClockIcon className="w-4 h-4 text-red-500 mr-1.5" />
                 <div>
-                  <p className="text-xs md:text-sm font-medium text-gray-900">09:00 - Selesai</p>
+                  <p className="text-xs font-medium text-gray-900">09:00 - Selesai</p>
                 </div>
               </div>
-              <div className="flex items-center bg-white px-3 py-1.5 rounded-lg border border-gray-200 shadow-xs">
-                <MapPinIcon className="w-4 h-4 md:w-5 md:h-5 text-red-500 mr-2" />
+              <div className="flex items-center bg-white px-2 py-1.5 rounded-lg border border-gray-200 shadow-xs">
+                <MapPinIcon className="w-4 h-4 text-red-500 mr-1.5" />
                 <div>
-                  <p className="text-xs md:text-sm font-medium text-gray-900">Online</p>
+                  <p className="text-xs font-medium text-gray-900">Online</p>
                 </div>
               </div>
             </motion.div>
 
-            {/* Organizer Info */}
+            {/* Organizer Info - Desktop Only */}
             <motion.div
               variants={itemVariants}
-              className="mb-6 md:mb-8 p-4 bg-white/50 rounded-lg border border-gray-200 max-w-2xl mx-auto lg:mx-0"
+              className="mb-6 md:mb-8 p-4 bg-white/50 rounded-lg border border-gray-200 max-w-2xl mx-auto lg:mx-0 lg:block hidden"
             >
               <p className="text-sm text-gray-600 mb-1">Penyelenggara:</p>
               <p className="font-semibold text-gray-900">IAI MUDA KOMISARIAT MALANG</p>
               <p className="text-xs text-gray-500 mt-1">Anggota Muda Ikatan Akuntan Indonesia Komisariat Malang</p>
             </motion.div>
 
-            {/* CTA Button */}
+            {/* CTA Button - Desktop Only */}
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
+              className="hidden lg:flex flex-col sm:flex-row gap-3 justify-center lg:justify-start"
             >
               <motion.button
                 whileHover={{ scale: 1.02 }}
@@ -327,6 +182,40 @@ const Hero = () => {
                 />
               </div>
             </div>
+          </motion.div>
+
+          {/* Mobile-only content after image */}
+          <motion.div
+            initial="hidden"
+            animate={controls}
+            variants={containerVariants}
+            className="lg:hidden space-y-6"
+          >
+            {/* Organizer Info - Mobile */}
+            <motion.div
+              variants={itemVariants}
+              className="p-4 bg-white/50 rounded-lg border border-gray-200 max-w-2xl mx-auto"
+            >
+              <p className="text-sm text-gray-600 mb-1">Penyelenggara:</p>
+              <p className="font-semibold text-gray-900">IAI MUDA KOMISARIAT MALANG</p>
+              <p className="text-xs text-gray-500 mt-1">Anggota Muda Ikatan Akuntan Indonesia Komisariat Malang</p>
+            </motion.div>
+
+            {/* CTA Button - Mobile */}
+            <motion.div
+              variants={itemVariants}
+              className="flex justify-center"
+            >
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-lg shadow-sm font-medium transition-colors w-full max-w-md"
+                aria-label="Daftar training sekarang"
+              >
+                Daftar Sekarang
+                <ArrowRightIcon className="w-5 h-5" />
+              </motion.button>
+            </motion.div>
           </motion.div>
         </div>
       </div>

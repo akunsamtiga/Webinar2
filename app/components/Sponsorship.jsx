@@ -165,7 +165,6 @@ const Sponsorship = () => {
           viewport={{ once: true }}
           className="mt-12 p-6 bg-red-50 rounded-lg border border-red-100 max-w-3xl mx-auto text-center"
         >
-          <h3 className="text-xl font-medium text-gray-900 mb-3">🙏 Terima Kasih</h3>
           <p className="text-gray-600 mb-4">
             Training ini terlaksana berkat dukungan dan kolaborasi dari berbagai pihak. 
             Mari terus bersinergi untuk kemajuan profesi akuntansi di Indonesia.
