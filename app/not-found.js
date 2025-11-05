@@ -1,20 +1,35 @@
-// app/not-found.js
-import Link from 'next/link';
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
 
-export default function NotFound() {
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
+
+export const metadata = {
+  title: 'In House Training 2023 - IAI Muda Malang Raya',
+  description: 'Internalisasi pemahaman dan kapabilitas kepengurusan organisasi IAI Muda Malang Raya Gen 9. #Muda, Berani, Berintegritas!',
+  keywords: 'IAI Muda, Malang Raya, In House Training, Organisasi, Akuntansi, Gen 9',
+  openGraph: {
+    title: 'In House Training 2023 - IAI Muda Malang Raya',
+    description: 'Internalisasi pemahaman dan kapabilitas kepengurusan organisasi IAI Muda Malang Raya Gen 9',
+    type: 'website',
+  }
+};
+
+export default function RootLayout({ children }) {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white text-gray-800 font-sans">
-      <div className="text-center max-w-lg px-6 py-12">
-        <h1 className="text-6xl font-extrabold mb-4 text-gray-900">404</h1>
-        <p className="text-lg mb-6 text-gray-600">Oops! The page you&apos;re looking for doesn&apos;t exist.</p>
-        <Link
-          href="/"
-          className="inline-block bg-gray-900 text-white py-3 px-8 rounded-md text-lg font-semibold hover:bg-gray-800 transition duration-300"
-        >
-          Go Back Home
-        </Link>
-      </div>
-    </div>
+    <html lang="id">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
+        {children}
+      </body>
+    </html>
   );
 }
-// This is a custom 404 page for a Next.js application. It provides a user-friendly message and a link to return to the homepage.

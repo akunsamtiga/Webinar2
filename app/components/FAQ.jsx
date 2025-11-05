@@ -25,28 +25,36 @@ const FAQ = () => {
 
   const faqs = [
     {
-      question: "Bagaimana cara mengikuti webinar ini?",
-      answer: "Setelah mendaftar, Anda akan menerima email konfirmasi dengan link Zoom webinar 1 hari sebelum acara. Anda bisa join langsung melalui link tersebut saat webinar dimulai."
+      question: "Bagaimana cara mengikuti training ini?",
+      answer: "Setelah mendaftar melalui formulir, Anda akan menerima email konfirmasi dengan link Zoom training 1 hari sebelum acara. Pastikan untuk join tepat waktu agar tidak ketinggalan sesi penting."
     },
     {
-      question: "Apakah akan ada rekaman jika saya tidak bisa hadir live?",
-      answer: "Ya, semua peserta paket Premium akan mendapatkan rekaman full webinar yang bisa diakses selama 1 tahun. Peserta gratis bisa upgrade ke paket Premium untuk mendapatkan rekaman."
+      question: "Apakah ada biaya untuk mengikuti training?",
+      answer: "Training ini GRATIS untuk seluruh anggota IAI Muda Malang Raya Gen 9. Namun, jumlah peserta terbatas sehingga pendaftaran dilakukan first come first served."
     },
     {
-      question: "Perangkat apa yang saya butuhkan untuk mengikuti?",
-      answer: "Anda hanya perlu perangkat (laptop/HP) dengan koneksi internet stabil. Kami sarankan menggunakan laptop untuk pengalaman terbaik."
+      question: "Apakah akan ada rekaman jika tidak bisa hadir live?",
+      answer: "Ya, training akan direkam dan dibagikan kepada seluruh peserta yang terdaftar. Namun, kami sangat menganjurkan untuk hadir live agar bisa berinteraksi langsung dengan pemateri dan sesama peserta."
     },
     {
-      question: "Apakah ada sertifikat partisipasi?",
-      answer: "Ya, semua peserta akan mendapatkan sertifikat elektronik yang bisa diunduh setelah webinar selesai."
+      question: "Perangkat apa yang dibutuhkan untuk mengikuti training?",
+      answer: "Anda memerlukan laptop/PC atau smartphone dengan koneksi internet stabil. Kami sangat merekomendasikan menggunakan laptop untuk pengalaman terbaik. Pastikan aplikasi Zoom sudah terinstall."
     },
     {
-      question: "Bisakah saya bertanya langsung ke pembicara?",
-      answer: "Tentu! Ada sesi Q&A khusus di akhir webinar. Peserta paket Premium akan mendapatkan prioritas pertanyaan."
+      question: "Apakah mendapatkan sertifikat?",
+      answer: "Ya, semua peserta yang hadir penuh (minimal 80% waktu training) akan mendapatkan sertifikat elektronik dari IAI Muda Komisariat Malang yang bisa diunduh setelah training selesai."
     },
     {
-      question: "Apa kebijakan refund jika saya tidak puas?",
-      answer: "Kami menawarkan garansi 100% uang kembali jika Anda tidak puas dengan konten webinar. Cukup kirim email dalam 7 hari setelah acara."
+      question: "Apakah bisa bertanya langsung ke pemateri?",
+      answer: "Tentu! Ada sesi Q&A khusus di akhir setiap sesi dan juga sesi diskusi interaktif. Anda bisa bertanya langsung atau melalui chat Zoom."
+    },
+    {
+      question: "Apakah materi training akan dibagikan?",
+      answer: "Ya, semua materi presentasi dalam bentuk PDF akan dibagikan kepada peserta maksimal 2 hari setelah training selesai melalui email dan grup WhatsApp."
+    },
+    {
+      question: "Siapa yang bisa mengikuti training ini?",
+      answer: "Training ini terbuka untuk seluruh pengurus, anggota aktif, calon pengurus, dan alumni IAI Muda Malang Raya yang ingin meningkatkan pemahaman tentang kepengurusan organisasi."
     }
   ];
 
@@ -59,7 +67,7 @@ const FAQ = () => {
             <span className="text-red-600 font-bold">Pertanyaan</span> Umum
           </h2>
           <p className="text-gray-600 max-w-md mx-auto">
-            Temukan jawaban untuk pertanyaan yang sering diajukan.
+            Temukan jawaban untuk pertanyaan yang sering diajukan seputar training ini.
           </p>
         </div>
 
@@ -80,13 +88,13 @@ const FAQ = () => {
                 aria-expanded={activeIndex === index}
                 aria-controls={`faq-${index}`}
               >
-                <h3 className="text-base md:text-lg font-medium text-gray-900">
+                <h3 className="text-base md:text-lg font-medium text-gray-900 pr-4">
                   {faq.question}
                 </h3>
                 {activeIndex === index ? (
-                  <ChevronUpIcon className="w-5 h-5 text-red-600" aria-hidden="true" />
+                  <ChevronUpIcon className="w-5 h-5 text-red-600 flex-shrink-0" aria-hidden="true" />
                 ) : (
-                  <ChevronDownIcon className="w-5 h-5 text-gray-500" aria-hidden="true" />
+                  <ChevronDownIcon className="w-5 h-5 text-gray-500 flex-shrink-0" aria-hidden="true" />
                 )}
               </button>
 
@@ -118,7 +126,7 @@ const FAQ = () => {
             className="inline-flex items-center px-4 py-2 border border-red-600 text-red-600 rounded-md hover:bg-red-50 transition-colors text-sm font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500"
           >
             <EnvelopeIcon className="w-4 h-4 mr-2" aria-hidden="true" />
-            Hubungi Kami
+            Hubungi Panitia
           </motion.button>
         </div>
       </div>

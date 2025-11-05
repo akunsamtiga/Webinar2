@@ -2,7 +2,7 @@
 import { motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
 
-// Lazy load non-critical icons with better loading states
+// Lazy load non-critical icons
 const CheckCircleIcon = dynamic(() => import('@heroicons/react/24/outline').then(mod => mod.CheckCircleIcon), {
   loading: () => <span className="inline-block w-5 h-5 bg-gray-200 rounded-full animate-pulse" />,
   ssr: false
@@ -25,58 +25,58 @@ const About = () => {
   const FEATURES = [
     {
       icon: <CheckCircleIcon className="w-5 h-5 text-red-600" aria-hidden="true" />,
-      title: "Materi Inovatif",
-      desc: "Kurikulum berbasis kasus industri terkini"
+      title: "Materi Praktis",
+      desc: "Kurikulum berbasis kebutuhan organisasi"
     },
     {
       icon: <UsersIcon className="w-5 h-5 text-red-600" aria-hidden="true" />,
       title: "Networking",
-      desc: "Interaksi dengan praktisi dan peserta"
+      desc: "Sesi diskusi dengan sesama pengurus"
     },
     {
       icon: <ArrowTrendingUpIcon className="w-5 h-5 text-red-600" aria-hidden="true" />,
-      title: "Data Terkini",
-      desc: "Analisis tren AI 2024"
+      title: "Best Practice",
+      desc: "Strategi kepengurusan yang terbukti efektif"
     },
     {
       icon: <BriefcaseIcon className="w-5 h-5 text-red-600" aria-hidden="true" />,
       title: "Sertifikat",
-      desc: "Bukti partisipasi profesional"
+      desc: "Bukti partisipasi dari IAI Muda"
     }
   ];
 
   const LEARNING_POINTS = [
-    "Fundamental AI untuk bisnis",
-    "Tools praktis siap pakai",
-    "Studi kasus nyata",
-    "Roadmap transformasi digital"
+    "Fundamental kepengurusan organisasi",
+    "Strategi pengembangan anggota",
+    "Manajemen program dan kegiatan",
+    "Best practice dari generasi sebelumnya"
   ];
 
   const TARGET_AUDIENCE = [
     {
-      title: "Profesional Bisnis",
-      desc: "CEO, Manajer, dan pengambil keputusan"
+      title: "Pengurus Gen 9",
+      desc: "Pengurus aktif IAI Muda Malang Raya"
     },
     {
-      title: "Tim Teknologi",
-      desc: "Developer dan IT specialist"
+      title: "Calon Pengurus",
+      desc: "Anggota yang berminat aktif di organisasi"
     },
     {
-      title: "Startup Founder",
-      desc: "Pendiri startup dan digital entrepreneur"
+      title: "Alumni Pengurus",
+      desc: "Mentor dan advisor dari generasi sebelumnya"
     }
   ];
 
   return (
     <section className="py-12 md:py-16 bg-white" aria-labelledby="about-heading">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-        {/* Header Section with better semantic structure */}
+        {/* Header Section */}
         <header className="text-center mb-8 md:mb-12">
           <h1 id="about-heading" className="text-3xl sm:text-4xl md:text-5xl font-light text-gray-900 mb-3">
-            Tentang <span className="text-red-600 font-bold">Webinar</span>
+            Tentang <span className="text-red-600 font-bold">Training</span>
           </h1>
           <p className="text-gray-600 max-w-xl mx-auto leading-relaxed">
-            Transformasi bisnis melalui implementasi AI dalam sesi intensif 2 jam.
+            Meningkatkan pemahaman dan kapabilitas kepengurusan organisasi untuk IAI Muda Malang Raya Gen 9.
           </p>
         </header>
 
@@ -96,9 +96,18 @@ const About = () => {
                   ))}
                 </ul>
               </div>
+
+              {/* Context */}
+              <div className="p-4 bg-red-50 rounded-lg border border-red-100">
+                <h3 className="font-medium text-gray-900 mb-2">Konteks Training</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  Training ini dirancang khusus untuk internalisasi pemahaman dan meningkatkan kapabilitas 
+                  pengurus dalam menjalankan tugas dan tanggung jawab organisasi IAI Muda Komisariat Malang.
+                </p>
+              </div>
             </article>
 
-            {/* Fitur Webinar */}
+            {/* Fitur Training */}
             <aside className="flex-1 grid grid-cols-1 gap-3 md:gap-4">
               {FEATURES.map((feature, i) => (
                 <motion.article
@@ -122,31 +131,6 @@ const About = () => {
               ))}
             </aside>
           </div>
-
-          {/* Target Audience */}
-          <section className="mt-10 md:mt-12">
-            <h2 className="text-xl font-bold text-gray-900 text-center mb-6 md:mb-8">Untuk Siapa?</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
-              {TARGET_AUDIENCE.map((item, i) => (
-                <motion.article 
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: i * 0.1, duration: 0.3 }}
-                  viewport={{ once: true }}
-                  className="p-4 md:p-5 bg-gray-50 rounded-xl text-center"
-                >
-                  <div className="mb-3 flex justify-center">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-red-50 rounded-full flex items-center justify-center">
-                      <UsersIcon className="w-4 h-4 md:w-5 md:h-5 text-red-600" aria-hidden="true" />
-                    </div>
-                  </div>
-                  <h3 className="font-medium text-gray-900 mb-1">{item.title}</h3>
-                  <p className="text-gray-600 text-sm">{item.desc}</p>
-                </motion.article>
-              ))}
-            </div>
-          </section>
         </main>
       </div>
     </section>
